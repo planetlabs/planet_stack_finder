@@ -9,7 +9,9 @@ from sklearn.cluster import DBSCAN
 def find_stacks(input_scenes, min_depth=2, max_sep_km=2, method="centers"):
     '''
     Takes in a list of dictionaries that correspond to scenes. Returns stacks
-    of scenes, which are smaller lists of dictionaries
+    of scenes, which are (likely) smaller lists of dictionaries.
+    Each dictionary in the list must have keys ['geometry']['coordinates'] or
+    ['coordinates']
     '''
 
     """Find overlapping stacks of scenes.
@@ -28,7 +30,10 @@ def find_stacks(input_scenes, min_depth=2, max_sep_km=2, method="centers"):
     """
     max_sep = arc_length_to_latitude(max_sep_km)
 
-    coords = [s['geometry']['coordinates'] for s in input_scenes]
+    if 'coordinates' in input_scenes[0]:
+        coords = [s['coordinates'] for s in input_scenes]
+    else:
+        coords = [s['geometry']['coordinates'] for s in input_scenes]
     centers_raw = [[sum(coord[0][i][0] for i in range(4)) / 4,
                     sum(coord[0][i][1] for i in range(4)) / 4]
                    for coord in coords]
@@ -46,11 +51,12 @@ def find_stacks(input_scenes, min_depth=2, max_sep_km=2, method="centers"):
     else:
         raise ValueError("Method %s not valid" % method)
 
-    # TODO (kyle) revisit this line! Is it necessary? Wasn't here before!
+    # cast to ints for easy bin counting
     cluster_ints = clusters.astype('int64')
 
     stack_counts = np.bincount(cluster_ints)
     sc = stack_counts  # for shorter next nice
+
     # order stack ids in descening order of depth
     deep_clus_ids = [
         cid for (clus_num, cid) in sorted(zip(sc, range(len(sc))))[::-1]]
