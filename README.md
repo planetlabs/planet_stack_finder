@@ -1,12 +1,16 @@
 # Planet Labs Stack Finder #
 
-Find locations where there are deep stacks of imagery. 
+Find locations where there are deep stacks of imagery by clustering the location of polygons. 
 
-## To Run and Test ##
-$ vagrant up
+Setup
+pip install -e .
 
-$ vagrant ssh
+Tests
+nosetests
 
-$ cd /vagrant
+CLI
+findstacks /path/to/file.geojson 
 
-$ nosetests
+Python
+import from stack_finder
+from src import stack_finder
