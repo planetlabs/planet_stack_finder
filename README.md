@@ -12,7 +12,5 @@ nosetests
 findstacks /path/to/file.geojson 
 
 ## Python ##
-'''
-import from stack_finder
-from src import stack_finder
-'''
+> import from stack_finder
+> from src import stack_finder
