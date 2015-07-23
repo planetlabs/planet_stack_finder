@@ -3,13 +3,13 @@
 Find locations where there are deep stacks of imagery by clustering the location of polygons. 
 
 ## Setup ##
-pip install -e .
+`pip install -e .`
 
 ## Tests ##
-nosetests
+`nosetests`
 
 ## CLI ##
-findstacks /path/to/file.geojson 
+`findstacks /path/to/file.geojson` 
 
 ## Python ##
 ```
