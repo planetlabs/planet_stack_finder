@@ -2,10 +2,14 @@
 # Description: Tests the functionality of stack_finder.py
 
 import unittest
-
 import stack_finder
+import os
+from click.testing import CliRunner
+from src.cli import findstacks
 
 
+
+# tests for stack finder
 class StackFinderTest(unittest.TestCase):
     def test_find_stacks(self):
         default_scene = {
@@ -84,6 +88,15 @@ class StackFinderTest(unittest.TestCase):
 
         # We passed in 2 northern scenes
         self.assertEqual(len(stacks[1]), 2)
+
+
+def test_stacksfinder_cli():
+
+    srcpath = os.path.join(os.path.dirname(__file__), 'metadata.geojson')
+
+    runner = CliRunner()
+    result = runner.invoke(findstacks, [srcpath])
+    assert result.exit_code == 0
 
 
 if __name__ == '__main__':
