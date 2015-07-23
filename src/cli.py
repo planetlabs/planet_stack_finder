@@ -4,8 +4,6 @@ import click
 from stack_finder import find_stacks
 import json
 
-import pprint
-
 
 @click.command("findstacks")
 @click.argument('metadata', default='-', required=False, nargs=1)

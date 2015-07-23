@@ -8,7 +8,6 @@ from click.testing import CliRunner
 from src.cli import findstacks
 
 
-
 # tests for stack finder
 class StackFinderTest(unittest.TestCase):
     def test_find_stacks(self):
