@@ -2,10 +2,10 @@
 # Description: Tests the functionality of stack_finder.py
 
 import unittest
-import stack_finder
+from stackfinder import stack_finder
 import os
 from click.testing import CliRunner
-from src.cli import findstacks
+from stackfinder.cli import findstacks
 
 
 # tests for stack finder

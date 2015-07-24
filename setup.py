@@ -30,6 +30,6 @@ setup(name='planet_stack_finder',
       },
       entry_points="""
       [console_scripts]
-      findstacks=src.cli:findstacks
+      findstacks=stackfinder.cli:findstacks
       """
       )
