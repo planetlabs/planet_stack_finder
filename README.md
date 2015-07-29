@@ -13,6 +13,5 @@ Find locations where there are deep stacks of imagery by clustering the location
 
 ## Python ##
 ```
-import from stack_finder
 from stackfinder import stack_finder
 ```
