@@ -23,7 +23,8 @@ setup(name='planet_stack_finder',
       install_requires=[
           'click',
           'numpy',
-          'sklearn'
+          'sklearn',
+          'scipy'
       ],
       extras_require={
           'test': ['pytest'],
