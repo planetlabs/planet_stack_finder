@@ -2,7 +2,7 @@
 # Description: Tests the functionality of stack_finder.py
 
 import unittest
-from stackfinder import stack_finder
+import stackfinder
 import os
 from click.testing import CliRunner
 from stackfinder.cli import findstacks
@@ -76,7 +76,7 @@ class StackFinderTest(unittest.TestCase):
             default_scene.copy(),
             default_scene.copy()]
 
-        stacks, stack_centers = stack_finder.find_stacks(scenes)
+        stacks, stack_centers = stackfinder.findstacks(scenes)
 
         # There should just be two stacks, the default scenes in one stack
         # and the northern scenes in another stack
