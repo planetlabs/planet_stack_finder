@@ -2,10 +2,10 @@
 # Description: Tests the functionality of stack_finder.py
 
 import unittest
-from stackfinder import stack_finder
+from stackfinder import findstacks
 import os
 from click.testing import CliRunner
-from stackfinder.cli import findstacks
+from stackfinder.cli import find_stacks
 
 
 # tests for stack finder
@@ -76,7 +76,7 @@ class StackFinderTest(unittest.TestCase):
             default_scene.copy(),
             default_scene.copy()]
 
-        stacks, stack_centers = stack_finder.find_stacks(scenes)
+        stacks, stack_centers = findstacks(scenes)
 
         # There should just be two stacks, the default scenes in one stack
         # and the northern scenes in another stack
@@ -88,14 +88,13 @@ class StackFinderTest(unittest.TestCase):
         # We passed in 2 northern scenes
         self.assertEqual(len(stacks[1]), 2)
 
+    def test_stacksfinder_cli(self):
 
-def test_stacksfinder_cli():
+        srcpath = os.path.join(os.path.dirname(__file__), 'metadata.geojson')
 
-    srcpath = os.path.join(os.path.dirname(__file__), 'metadata.geojson')
-
-    runner = CliRunner()
-    result = runner.invoke(findstacks, [srcpath])
-    assert result.exit_code == 0
+        runner = CliRunner()
+        result = runner.invoke(find_stacks, [srcpath])
+        assert result.exit_code == 0
 
 
 if __name__ == '__main__':
