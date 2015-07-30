@@ -18,10 +18,10 @@ def arc_length_to_latitude(km):
     return (km / EARTH_RADIUS) * RADIANS_TO_DEGREES
 
 
-# def change_in_longitude(latitude, km):
-#     '''
-#     Given a latitude and a distance west, return the change in longitude.
-#     '''
-#     # Find the radius of a circle around the earth at given latitude.
-#     radius = EARTH_RADIUS * math.cos(latitude * DEGREES_TO_RADIANS)
-#     return (km / radius) * RADIANS_TO_DEGREES
+def change_in_longitude(latitude, km):
+    '''
+    Given a latitude and a distance west, return the change in longitude.
+    '''
+    # Find the radius of a circle around the earth at given latitude.
+    radius = EARTH_RADIUS * math.cos(latitude * DEGREES_TO_RADIANS)
+    return (km / radius) * RADIANS_TO_DEGREES

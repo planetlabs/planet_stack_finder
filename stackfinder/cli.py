@@ -1,18 +1,23 @@
 """cli interface for stack finding
 """
 import click
-from stack_finder import find_stacks
+from stackfinder import findstacks
 import json
 
 
-@click.command("findstacks")
+@click.command("find-stacks")
 @click.argument('metadata', default='-', required=False, nargs=1)
-@click.option('--index', default=0, help='zero indexed stack number')
+@click.option('--index', default=0, help='zero indexed stack number ordered by decreasing number of objects in cluster')
 @click.pass_context
-def findstacks(ctx, metadata, index):
+def find_stacks(ctx, metadata, index):
     """
-    find the deepest stack in a set of images
-    example run: cat tests/polygon.geojson | planet search | findstacks
+    Input is a list of geojson dictionaries.
+
+    Each dictionary in the list must have keys ['geometry']['coordinates'] or
+    ['coordinates']
+
+    e.g. find the deepest stack in a set of planet labs images
+    cat path/to/file.geojson | planet search | find-stacks
     """
     if metadata == '-':
         src = click.open_file('-')
@@ -32,7 +37,7 @@ def findstacks(ctx, metadata, index):
     for i in geojson['features']:
         scenes_md.append(i)
 
-    stacks, stack_centers = find_stacks(scenes_md, min_depth=2, max_sep_km=2)
+    stacks, stack_centers = findstacks(scenes_md, min_depth=2, max_sep_km=2)
 
     if len(stacks) < index+1:
         click.echo("No Stack of that index")
