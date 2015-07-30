@@ -3,7 +3,7 @@
 
 import math
 
-EARTH_RADIUS = 6378.1   # km
+EARTH_RADIUS = 6378.137  # km
 DEGREES_TO_RADIANS = math.pi / 180.0
 RADIANS_TO_DEGREES = 180.0 / math.pi
 
@@ -22,6 +22,6 @@ def change_in_longitude(latitude, km):
     '''
     Given a latitude and a distance west, return the change in longitude.
     '''
-    # Find the radius of a circle around the earth at given latitude.
-    radius = EARTH_RADIUS * math.cos(latitude * DEGREES_TO_RADIANS)
-    return (km / radius) * RADIANS_TO_DEGREES
+    b = math.tan(km / (2 * EARTH_RADIUS)) ** 2
+    dLon = 2 * math.asin(math.sqrt(b / (1+b))/math.cos(math.radians(latitude)))
+    return math.degrees(dLon)
