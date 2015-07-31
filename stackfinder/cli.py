@@ -41,6 +41,7 @@ def find_stacks(ctx, metadata, index):
 
     if len(stacks) < index+1:
         click.echo("No Stack of that index")
+        exit()
 
     # create a feature collection from the stacks
     FC = {

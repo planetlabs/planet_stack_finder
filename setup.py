@@ -8,7 +8,7 @@ with codecs_open('README.md', encoding='utf-8') as f:
 
 
 setup(name='stackfinder',
-      version='0.0.10',
+      version='0.0.11',
       description=u"Find local clusters from geojson.",
       long_description=long_description,
       classifiers=[],
@@ -16,7 +16,7 @@ setup(name='stackfinder',
       author=u"Josh Tennefoss",
       author_email='jt@planet.com',
       url='https://github.com/planetlabs/planet_stack_finder',
-      download_url='https://github.com/planetlabs/planet_stack_finder/tarball/0.10',
+      download_url='https://github.com/planetlabs/planet_stack_finder/tarball/0.11',
       license='MIT',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
