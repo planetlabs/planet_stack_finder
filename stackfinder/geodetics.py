@@ -23,5 +23,7 @@ def change_in_longitude(latitude, km):
     Given a latitude and a distance west, return the change in longitude.
     '''
     b = math.tan(km / (2 * EARTH_RADIUS)) ** 2
-    dLon = 2 * math.asin(math.sqrt(b / (1+b))/math.cos(math.radians(latitude)))
-    return math.degrees(dLon)
+    dLon = 2 * math.asin(
+        math.sqrt(b / (1 + b)) / math.cos(math.radians(latitude)))
+    sign = abs(km) / km if km else 1
+    return sign * math.degrees(dLon)
