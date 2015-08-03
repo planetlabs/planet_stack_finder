@@ -24,6 +24,8 @@ def findstacks(input_scenes, min_depth=2, max_sep_km=2, method="centers"):
     stacks -- List of list of scenes, where stacks[i]
               is a list of the scenes in the i-th stack.
               Stacks are ordered in decreasing depth.
+
+    stack_centers -- List of the centers of the stacks.
     """
     max_sep = arc_length_to_latitude(max_sep_km)
 
