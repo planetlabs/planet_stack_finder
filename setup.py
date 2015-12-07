@@ -23,7 +23,7 @@ setup(name='stackfinder',
       zip_safe=False,
       install_requires=[
           'click==4.1',
-          'numpy==1.9.2',
+          'numpy>=1.9.2',
           'scikit-learn==0.16.1',
           'scipy==0.16.0'
       ],
