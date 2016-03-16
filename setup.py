@@ -8,7 +8,7 @@ with codecs_open('README.md', encoding='utf-8') as f:
 
 
 setup(name='stackfinder',
-      version='0.0.11',
+      version='0.0.12',
       description=u"Find local clusters from geojson.",
       long_description=long_description,
       classifiers=[],
@@ -22,7 +22,7 @@ setup(name='stackfinder',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'click==4.1',
+          'click>=4.1',
           'numpy>=1.9.2',
           'scikit-learn>=0.16.1',
           'scipy>=0.16.0'
